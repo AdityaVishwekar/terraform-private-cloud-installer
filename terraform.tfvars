@@ -7,4 +7,4 @@ region				= "us-ashburn-1"
 ssh_private_key		= "/home/osboxes/.ssh/terraformKeys/privateKey"
 ssh_public_key		= "/home/osboxes/.ssh/terraformKeys/publicKey"
 
-proxy_ol_image_name	= "Oracle-Linux-7.6-2019.04.18-0"
+proxy_ol_image_name	= "Canonical-Ubuntu-18.04-2019.04.15-0"

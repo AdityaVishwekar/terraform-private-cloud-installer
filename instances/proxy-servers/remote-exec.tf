@@ -6,7 +6,7 @@ resource "null_resource" "remote-exec-jcs" {
         type = "ssh"
         timeout = "30m"
         host = "${data.oci_core_vnic.InstanceVnic.public_ip_address}"
-        user = "opc"
+        user = "ubuntu"
         #private_key = "${file("/home/osboxes/.ssh/privateKey")}"
         private_key = "${file("${var.ssh_private_key}")}"
     }

@@ -20,3 +20,19 @@ resource "oci_core_route_table" "ExampleRT" {
     network_entity_id = "${oci_core_internet_gateway.ExampleIG.id}"
   }
 }
+
+resource "oci_core_nat_gateway" "ExampleNAT" {
+    compartment_id = "${var.compartment_ocid}"
+    display_name = "TFExampleNAT"
+    vcn_id = "${oci_core_virtual_network.ExampleVCN.id}"
+}
+
+resource "oci_core_route_table" "ExampleNATRT" {
+  compartment_id = "${var.compartment_ocid}"
+  vcn_id = "${oci_core_virtual_network.ExampleVCN.id}"
+  display_name = "TFNATRouteTable"
+  route_rules {
+    cidr_block = "0.0.0.0/0"
+    network_entity_id = "${oci_core_nat_gateway.ExampleNAT.id}"
+  }
+}

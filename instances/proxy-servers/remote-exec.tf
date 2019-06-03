@@ -49,3 +49,34 @@ resource "null_resource" "install-nginx" {
       ]
     }
 }
+
+resource "null_resource" "install-ansible" {
+    depends_on = ["oci_core_instance.proxy-instance","oci_core_volume_attachment.TFBlock0Attach"]
+    provisioner "file" {
+      connection {
+        agent = true
+        type = "ssh"
+        timeout = "30m"
+        host = "${data.oci_core_vnic.InstanceVnic.public_ip_address}"
+        user = "ubuntu"
+        private_key = "${file("${var.ssh_private_key}")}"
+        }
+        source = "/home/osboxes/Documents/terraform-private-cloud-installer/instances/proxy-servers/scripts/"
+        destination = "~/"
+    }
+    provisioner "remote-exec" {
+      connection {
+        agent = true
+        type = "ssh"
+        timeout = "30m"
+        host = "${data.oci_core_vnic.InstanceVnic.public_ip_address}"
+        user = "ubuntu"
+        #private_key = "${file("/home/osboxes/.ssh/privateKey")}"
+        private_key = "${file("${var.ssh_private_key}")}"
+    }
+      inline = [
+        "chmod a+x setupNginx.sh",
+        "sudo ./setupNginx.sh"
+      ]
+    }
+}

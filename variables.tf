@@ -13,6 +13,11 @@ variable "AD" {
 variable "proxyShape" {
     default = "VM.Standard2.1"
 }
+
+variable "appShape" {
+    default = "VM.Standard2.1"
+}
+
 variable "InstanceImageOCID" {
     type = "map"
     default = {
@@ -40,6 +45,10 @@ variable "proxy_ol_image_name" {
   default = "Oracle-Linux-7.5-2018.10.16-0"
 }
 
+variable "app_ol_image_name" {
+  default = "Oracle-Linux-7.5-2018.10.16-0"
+}
+
 variable "ssh_public_key_openssh" {
   description = "SSH public key in OpenSSH authorized_keys format for instances (generated if left blank)"
   type        = "string"
@@ -47,6 +56,10 @@ variable "ssh_public_key_openssh" {
 }
 
 variable "proxyAd1Count" {
+  default = 0
+}
+
+variable "appAd1Count" {
   default = 0
 }
 

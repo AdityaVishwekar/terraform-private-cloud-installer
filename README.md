@@ -4,11 +4,13 @@
 [API signing]: https://docs.us-phoenix-1.oraclecloud.com/Content/API/Concepts/apisigningkey.htm
 [Kubectl]: https://kubernetes.io/docs/tasks/tools/install-kubectl/
 
-# Terraform Installer for Reverse Proxy
+# Terraform Installer for Virtual Private Cloud
 
 [![wercker status](https://app.wercker.com/status/7dd9fa20b980673dc0e252961950f590/s/master "wercker status")](https://app.wercker.com/project/byKey/7dd9fa20b980673dc0e252961950f590)
 
 ## About
+
+### Setup Reverse Proxy
 
 The Reverse Proxy Installer for Oracle Cloud Infrastructure provides a Terraform-based Nginx installation for Oracle 
 Cloud Infrastructure. It consists of a set of [Terraform][terraform] modules and an example base configuration that is 
